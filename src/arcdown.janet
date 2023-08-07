@@ -33,11 +33,17 @@
     :codeblock (* "```" (? "janet") :s*)
     :main (/ (* :begin-arc-jdn :codeblock (<- (to :codeblock)) :codeblock :end-arc-jdn) ,|{:arc-jdn (jdn/decode $)})})
 
+(def main-point-peg
+  ~{:begin-main-point (* "<!--" :s* "BEGIN:MAINPOINT" :s* "-->" :s*)
+    :end-main-point (* :s* "<!--" :s* "END:MAINPOINT" :s* "-->")
+    :main (/ (* :begin-main-point (<- (to :end-main-point)) :end-main-point) ,|{:main-point $})})
 
 (def arcdown-peg 
   ~{:front-matter ,front-matter-peg
     :arc-text ,arc-text-peg
     :arc-jdn ,arc-jdn-peg
+    :main-point ,main-point-peg
+    :main (* (? :front-matter) (some (* (to (+ :arc-text :arc-jdn :main-point)) (+ :arc-text :arc-jdn :main-point))) (some 1))})
 
 (defn main [& args]
   (print "Hello, World!"))

@@ -271,6 +271,7 @@
 (deftest "arc-down-peg: parse real `.arcd` file"
   (test (peg/match arcdown-peg test-arcdown)
     @[{:front-matter @{"passage" "1 John 5:13-17"}}
+      {:main-point "John's purpose in writing is so that his readers may have confident knowledge of their eternal acceptance before God\xE2\x80\x94a confident knowledge which extends confidence to their prayers, even prayers for restored life in the aftermath of a brother or sister's sin."}
       {:arc-text @[@["Row" "ESV" "NIV" "NA28"]
                    @["1"
                      "13 I write these things to you who believe in the name of the Son of God,"
