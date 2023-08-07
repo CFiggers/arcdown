@@ -1,0 +1,217 @@
+---
+passage: 1 John 5:13-17
+---
+
+# 1 John 5:13–17
+
+## Main Point
+
+John's purpose in writing is so that his readers may have confident knowledge of their eternal acceptance before God—a confident knowledge which extends confidence to their prayers, even prayers for restored life in the aftermath of a brother or sister's sin.
+
+## Arc
+
+<!-- BEGIN:ARCTEXT -->
+| Row | ESV                                                                       | NIV                                                                      | NA28                                                                         |
+| --- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| 1   | 13 I write these things to you who believe in the name of the Son of God, | 13 I write these things to you who believe in the name of the Son of God | 13 Ταῦτα ἔγραψα ὑμῖν, [...] τοῖς πιστεύουσιν εἰς τὸ ὄνομα τοῦ υἱοῦ τοῦ θεοῦ. |
+| 2   | that you may know                                                         | so that you may know                                                     | ... ἵνα εἰδῆτε [...] ...                                                     |
+| 3   | that you have eternal life.                                               | that you have eternal life.                                              | ... ὅτι ζωὴν ἔχετε αἰώνιον, ...                                              |
+| 4   | 14 And this is the confidence that we have toward him,                    | 14 This is the confidence we have in approaching God:                    | 14 καὶ αὕτη ἐστὶν ἡ παρρησία ἣν ἔχομεν πρὸς αὐτόν,                           |
+| 5   | that if we ask anything according to his will                             | that if we ask anything according to his will,                           | ὅτι ἐάν τι αἰτώμεθα κατὰ τὸ θέλημα αὐτοῦ                                     |
+| 6   | he hears us.                                                              | he hears us.                                                             | ἀκούει ἡμῶν.                                                                 |
+| 7   | 15 And if we know                                                         | 15 And if we know                                                        | 15 καὶ ἐὰν οἴδαμεν                                                           |
+| 8   | that he hears us in whatever we ask,                                      | that he hears us—whatever we ask—                                        | ὅτι ἀκούει ἡμῶν ὃ ἐὰν αἰτώμεθα,                                              |
+| 9   | we know                                                                   | we know                                                                  | οἴδαμεν                                                                      |
+| 10  | that we have the requests that we have asked of him.                      | that we have what we asked of him.                                       | ὅτι ἔχομεν τὰ αἰτήματα ἃ ᾐτήκαμεν ἀπʼ αὐτοῦ.                                 |
+| 11  | 16 If anyone sees his brother committing a sin                            | 16 If you see any brother or sister commit a sin                         | 16 Ἐάν τις ἴδῃ τὸν ἀδελφὸν αὐτοῦ ἁμαρτάνοντα ἁμαρτίαν                        |
+| 12  | not leading to death,                                                     | that does not lead to death,                                             | μὴ πρὸς θάνατον,                                                             |
+| 13  | he shall ask,                                                             | you should pray                                                          | αἰτήσει                                                                      |
+| 14  | and God will give him life—                                               | and God will give them life.                                             | καὶ δώσει αὐτῷ ζωήν,                                                         |
+| 15  | to those who commit sins that do not lead to death.                       | I refer to those whose sin does not lead to death.                       | τοῖς ἁμαρτάνουσιν μὴ πρὸς θάνατον.                                           |
+| 16  | There is sin that leads to death;                                         | There is a sin that leads to death.                                      | ἔστιν ἁμαρτία πρὸς θάνατον·                                                  |
+| 17  | I do not say that one should pray for that.                               | I am not saying that you should pray about that.                         | οὐ περὶ ἐκείνης λέγω ἵνα ἐρωτήσῃ.                                            |
+| 18  | 17 All wrongdoing is sin,                                                 | 17 All wrongdoing is sin,                                                | 17 πᾶσα ἀδικία ἁμαρτία ἐστίν,                                                |
+| 19  | but there is sin that does not lead to death.                             | and there is sin that does not lead to death.                            | καὶ ἔστιν ἁμαρτία οὐ πρὸς θάνατον.                                           |
+<!-- END:ARCTEXT -->
+
+<!-- BEGIN:ARCYAML -->
+- Assertion/Extension
+  - Assertion
+    - Action/Purpose
+      - [1] Action
+      - Purpose *
+        - Perception/Object
+          - [2] Perception *
+          - [3] Object
+  - Extension
+    - Idea/Explanation
+      - Idea *
+        - Orienter/Content 
+          - [4] Orienter
+          - Content *
+            - Series
+              - And
+                - If/Then
+                  - [5] If
+                  - [6] Then *
+              - And
+                - If/Then
+                  - If
+                    - Perception/Object
+                      - [7] Perception *
+                      - [8] Object
+                  - Then *
+                    - Perception/Object
+                      - [9] Perception *
+                      - [10] Object
+      - Application
+        - Condition/Command
+          - Condition
+            - Epexegetical
+              - [11] _ *
+              - [12] Epexegesis
+          - Command *
+            - Action/Result
+              - [13] Action
+              - Result *
+                - Epexegetical
+                  - [14] _ *
+                  - Epexegesis
+                    - Idea/Explanation
+                      - [15] Idea *
+                      - Explanation
+                        - Series
+                          - And
+                            - Statement/Clarification
+                              - [16] Statement *
+                              - [17] Clarification
+                          - And
+                            - Concessive
+                              - [18] Concession
+                              - [19] Assertion *
+<!-- END:ARCYAML -->
+
+<!-- BEGIN:ARCJDN -->
+```janet
+[:Series
+ [["And"
+   [:Action/Purpose
+    [["Action" {:leaf 1}]
+     ["Purpose" {:main true}
+      [:Perception/Object
+       [["Perception" {:main true :leaf 2}]
+        ["Object" {:leaf 3}]]]]]]]
+
+  ["And"
+   [:Assertion/Application
+    [["Assertion" {:main true}
+      [:Orienter/Content
+       [["Orienter" {:leaf 4}]
+        ["Content" {:main true}
+         [:Series
+          [["And"
+            [:If/Then
+             [["If" {:leaf 5}]
+              ["Then" {:leaf 6 :main true}]]]]
+           ["And"
+            [:If/Then
+             [["If"
+               [:Perception/Object
+                [["Perception" {:leaf 7 :main true}]
+                 ["Object" {:leaf 8}]]]]
+              ["Then" {:main true}
+               [:Perception/Object
+                [["Perception" {:leaf 9 :main true}]
+                 ["Object" {:leaf 10}]]]]]]]]]]]]]
+     ["Application"
+      [:Condition/Command
+       [["Condition"
+         [:Epexegetical
+          [["_" {:leaf 11 :main true}]
+           ["Epexegesis" {:leaf 12}]]]]
+        ["Command" {:main true}
+         [:Action/Result
+          [["Action" {:leaf 13}]
+           ["Result" {:main true}
+            [:Epexegetical
+             [["_" {:leaf 14 :main true}]
+              ["Epexegesis"
+               [:Idea/Explanation
+                [["Idea" {:leaf 15 :main true}]
+                 ["Explanation"
+                  [:Series
+                   [["And"
+                     [:Statement/Clarification
+                      [["Statement" {:leaf 16 :main true}]
+                       ["Clarification" {:leaf 17}]]]]
+                    ["And"
+                     [:Concessive
+                      [["Concession" {:leaf 18}]
+                       ["Assertion" {:leaf 19 :main true}]]]]]]]]]]]]]]]]]]]]]]]]
+```
+<!-- END:ARCJDN -->
+
+<!-- BEGIN:BRACKETS -->
+```
+1  <──────────────Action────┐ 
+                            |
+2  <─Percep─*─┐ <─Purpose─*─┘ <──────────────────────────────────────────────────────────────────Assert─*─┐
+              |                                                                                           |
+3  <─Object───┘                                                                                           |
+                                                                                                          |  
+4  <───────────────────────────────────Orienter───┐                                                       |
+                                                  |                                                       |
+5  <─If───────┐                                   |                                                       |
+              |                                   |                                                       |
+6  <─Then───*─┘ <────────────And───┐              |                                                       |
+                                   |              |                                                       |
+7  <─Percep─*─┐ <─If─────┐         |              |                                                       |
+              |          |         | <─Content──*─┘ <───────────────────────────────Assert─*─┐ <─Extens───┘ 
+8  <─Object───┘          |         |                                                         |
+                         |         |                                                         |
+9  <─Percep─*─┐ <─Then─*─┘ <─And───┘                                                         |
+              |                                                                              |
+10 <─Object───┘                                                                              |
+                                                                                             |
+11 <──────*─┐ <───────────────────────────────────────────────────────Cond──────┐            | 
+            |                                                                   |            |
+12 <─Epex───┘                                                                   |            |
+                                                                                |            |  
+13 <─────────────────────────────────────────────────────Action───┐             |            | 
+                                                                  |             |            |
+14 <───────────────────────────────────────────────*─┐ <─Result─*─┘ <─Command─*─┘ <─Applic───┘
+                                                     |
+15 <─────────────────────────────Idea───*─┐ <─Epex───┘
+                                          |
+16 <─Statement─────*─┐                    |
+                     | <─And─┐            |
+17 <─Clarification───┘       |            |
+                             | <─Explan───┘  
+18 <─Concession──────┐       |  
+                     | <─And─┘         
+19 <─Assertion─────*─┘         
+```
+<!-- END:BRACKETS -->
+
+## Phrase
+
+<!-- BEGIN:PHRASE -->
+```
+| ESV | NA28                                                                         |
+| --- | ---------------------------------------------------------------------------- |
+|     | 13 Ταῦτα ἔγραψα ὑμῖν, [...] τοῖς πιστεύουσιν εἰς τὸ ὄνομα τοῦ υἱοῦ τοῦ θεοῦ. |
+|     | ... ἵνα εἰδῆτε ὅτι ζωὴν ἔχετε αἰώνιον, ...                                   |
+|     | 14 καὶ αὕτη ἐστὶν ἡ παρρησία ἣν ἔχομεν πρὸς αὐτόν,                           |
+|     | ὅτι ἐάν τι αἰτώμεθα κατὰ τὸ θέλημα αὐτοῦ                                     |
+|     | ἀκούει ἡμῶν.                                                                 |
+|     | 15 καὶ ἐὰν οἴδαμεν ὅτι ἀκούει ἡμῶν ὃ ἐὰν αἰτώμεθα,                           |
+|     | οἴδαμεν ὅτι ἔχομεν τὰ αἰτήματα ἃ ᾐτήκαμεν ἀπʼ αὐτοῦ.                         |
+|     | 16 Ἐάν τις ἴδῃ τὸν ἀδελφὸν αὐτοῦ ἁμαρτάνοντα ἁμαρτίαν μὴ πρὸς θάνατον,       |
+|     | αἰτήσει καὶ δώσει αὐτῷ ζωήν,                                                 |
+|     | τοῖς ἁμαρτάνουσιν μὴ πρὸς θάνατον.                                           |
+|     | ἔστιν ἁμαρτία πρὸς θάνατον·                                                  |
+|     | οὐ περὶ ἐκείνης λέγω ἵνα ἐρωτήσῃ.                                            |
+|     | 17 πᾶσα ἀδικία ἁμαρτία ἐστίν,                                                |
+|     | καὶ ἔστιν ἁμαρτία οὐ πρὸς θάνατον.                                           |
+```
+<!-- END:PHRASE -->

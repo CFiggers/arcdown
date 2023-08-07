@@ -1,0 +1,4 @@
+| ESV   | NIV            |
+| ----- | -------------- |
+| Thing | Other Thing    |
+| A     | Nothing        |
