@@ -34,6 +34,14 @@
       @["Thing" "Other Thing"]
       @["A" "Nothing"]]))
 
+(deftest "md-table-peg: md-table-blanks.txt" 
+  (def test-text (slurp "./test/md-table-blanks.txt"))
+  (test (peg/match md-table-peg test-text)
+    @[@["ESV" "NIV" "KJV"]
+      @["Thing" "Other Thing" "And"]
+      @["A" "" "The"]
+      @["" "Cell" "End"]]))
+
 (deftest "md-table-peg: arctable.txt"
   (def test-text (slurp "./test/arctable.txt"))
   (test (peg/match md-table-peg test-text)

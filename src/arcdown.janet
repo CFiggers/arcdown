@@ -18,8 +18,8 @@
 (def md-table-peg 
   ~{:raw-row (* (<- (to (+ "\n" -1))) (? "\n"))
    :header (/ (* :raw-row (* (some (set "|- ")) "\n")) 
-              ,|(filter (comp not empty?) (map string/trim (string/split "|" $))))
-   :row (/ :raw-row ,|(filter (comp not empty?) (map string/trim (string/split "|" $))))
+              ,|(array/slice (map string/trim (string/split "|" $)) 1 -2))
+   :row (/ :raw-row ,|(array/slice (map string/trim (string/split "|" $)) 1 -2))
    :main (* :header (some :row))})
 
 (def arc-text-peg
