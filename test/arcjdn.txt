@@ -1,0 +1,59 @@
+<!-- BEGIN:ARCJDN -->
+```janet
+[:Series
+ [["And"
+   [:Action/Purpose
+    [["Action" {:leaf 1}]
+     ["Purpose" {:main true}
+      [:Perception/Object
+       [["Perception" {:main true :leaf 2}]
+        ["Object" {:leaf 3}]]]]]]]
+
+  ["And"
+   [:Assertion/Application
+    [["Assertion" {:main true}
+      [:Orienter/Content
+       [["Orienter" {:leaf 4}]
+        ["Content" {:main true}
+         [:Series
+          [["And"
+            [:If/Then
+             [["If" {:leaf 5}]
+              ["Then" {:leaf 6 :main true}]]]]
+           ["And"
+            [:If/Then
+             [["If"
+               [:Perception/Object
+                [["Perception" {:leaf 7 :main true}]
+                 ["Object" {:leaf 8}]]]]
+              ["Then" {:main true}
+               [:Perception/Object
+                [["Perception" {:leaf 9 :main true}]
+                 ["Object" {:leaf 10}]]]]]]]]]]]]]
+     ["Application"
+      [:Condition/Command
+       [["Condition"
+         [:Epexegetical
+          [["_" {:leaf 11 :main true}]
+           ["Epexegesis" {:leaf 12}]]]]
+        ["Command" {:main true}
+         [:Action/Result
+          [["Action" {:leaf 13}]
+           ["Result" {:main true}
+            [:Epexegetical
+             [["_" {:leaf 14 :main true}]
+              ["Epexegesis"
+               [:Idea/Explanation
+                [["Idea" {:leaf 15 :main true}]
+                 ["Explanation"
+                  [:Series
+                   [["And"
+                     [:Statement/Clarification
+                      [["Statement" {:leaf 16 :main true}]
+                       ["Clarification" {:leaf 17}]]]]
+                    ["And"
+                     [:Concessive
+                      [["Concession" {:leaf 18}]
+                       ["Assertion" {:leaf 19 :main true}]]]]]]]]]]]]]]]]]]]]]]]]
+```
+<!-- END:ARCJDN -->

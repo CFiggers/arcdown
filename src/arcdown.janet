@@ -2,6 +2,7 @@
 # (use spork)
 
 (use judge)
+(import jdn)
 
 (def kv-line-peg
   ~{:key (<- (to ":"))
@@ -26,12 +27,17 @@
     :end-arc-text (* "<!--" :s* "END:ARCTEXT" :s* "-->" :s*)
     :main (/ (* :begin-arc-text (<- (to :end-arc-text)) :end-arc-text) ,|{:arc-text (peg/match md-table-peg $)})})
 
+(def arc-jdn-peg
+  ~{:begin-arc-jdn (* "<!--" :s* "BEGIN:ARCJDN" :s* "-->" :s*)
+    :end-arc-jdn (* "<!--" :s* "END:ARCJDN" :s* "-->")
+    :codeblock (* "```" (? "janet") :s*)
+    :main (/ (* :begin-arc-jdn :codeblock (<- (to :codeblock)) :codeblock :end-arc-jdn) ,|{:arc-jdn (jdn/decode $)})})
 
 
 (def arcdown-peg 
   ~{:front-matter ,front-matter-peg
     :arc-text ,arc-text-peg
-    :main (* (? :front-matter) (to :arc-text) :arc-text (some 1))})
+    :arc-jdn ,arc-jdn-peg
 
 (defn main [& args]
   (print "Hello, World!"))

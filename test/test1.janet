@@ -196,6 +196,70 @@
                      "and there is sin that does not lead to death."
                      "\xCE\xBA\xCE\xB1\xE1\xBD\xB6 \xE1\xBC\x94\xCF\x83\xCF\x84\xCE\xB9\xCE\xBD \xE1\xBC\x81\xCE\xBC\xCE\xB1\xCF\x81\xCF\x84\xCE\xAF\xCE\xB1 \xCE\xBF\xE1\xBD\x90 \xCF\x80\xCF\x81\xE1\xBD\xB8\xCF\x82 \xCE\xB8\xCE\xAC\xCE\xBD\xCE\xB1\xCF\x84\xCE\xBF\xCE\xBD."]]}]))
 
+(deftest "arc-jdn-peg: parses arcjdn.txt"
+  (def test-text (slurp "./test/arcjdn.txt"))
+  (test (peg/match arc-jdn-peg test-text)
+        @[{:arc-jdn [:Series
+                     [["And"
+                       [:Action/Purpose
+                        [["Action" {:leaf 1}]
+                         ["Purpose"
+                          {:main true}
+                          [:Perception/Object
+                           [["Perception" {:leaf 2 :main true}]
+                            ["Object" {:leaf 3}]]]]]]]
+                      ["And"
+                       [:Assertion/Application
+                        [["Assertion"
+                          {:main true}
+                          [:Orienter/Content
+                           [["Orienter" {:leaf 4}]
+                            ["Content"
+                             {:main true}
+                             [:Series
+                              [["And"
+                                [:If/Then
+                                 [["If" {:leaf 5}]
+                                  ["Then" {:leaf 6 :main true}]]]]
+                               ["And"
+                                [:If/Then
+                                 [["If"
+                                   [:Perception/Object
+                                    [["Perception" {:leaf 7 :main true}]
+                                     ["Object" {:leaf 8}]]]]
+                                  ["Then"
+                                   {:main true}
+                                   [:Perception/Object
+                                    [["Perception" {:leaf 9 :main true}]
+                                     ["Object" {:leaf 10}]]]]]]]]]]]]]
+                         ["Application"
+                          [:Condition/Command
+                           [["Condition"
+                             [:Epexegetical
+                              [["_" {:leaf 11 :main true}]
+                               ["Epexegesis" {:leaf 12}]]]]
+                            ["Command"
+                             {:main true}
+                             [:Action/Result
+                              [["Action" {:leaf 13}]
+                               ["Result"
+                                {:main true}
+                                [:Epexegetical
+                                 [["_" {:leaf 14 :main true}]
+                                  ["Epexegesis"
+                                   [:Idea/Explanation
+                                    [["Idea" {:leaf 15 :main true}]
+                                     ["Explanation"
+                                      [:Series
+                                       [["And"
+                                         [:Statement/Clarification
+                                          [["Statement" {:leaf 16 :main true}]
+                                           ["Clarification" {:leaf 17}]]]]
+                                        ["And"
+                                         [:Concessive
+                                          [["Concession" {:leaf 18}]
+                                           ["Assertion" {:leaf 19 :main true}]]]]]]]]]]]]]]]]]]]]]]]]}]))
+
 (deftest "arc-down-peg: parse real `.arcd` file"
   (test (peg/match arcdown-peg test-arcdown)
     @[{:front-matter @{"passage" "1 John 5:13-17"}}
@@ -275,4 +339,64 @@
                    @["19"
                      "but there is sin that does not lead to death."
                      "and there is sin that does not lead to death."
-                     "\xCE\xBA\xCE\xB1\xE1\xBD\xB6 \xE1\xBC\x94\xCF\x83\xCF\x84\xCE\xB9\xCE\xBD \xE1\xBC\x81\xCE\xBC\xCE\xB1\xCF\x81\xCF\x84\xCE\xAF\xCE\xB1 \xCE\xBF\xE1\xBD\x90 \xCF\x80\xCF\x81\xE1\xBD\xB8\xCF\x82 \xCE\xB8\xCE\xAC\xCE\xBD\xCE\xB1\xCF\x84\xCE\xBF\xCE\xBD."]]}]))
+                     "\xCE\xBA\xCE\xB1\xE1\xBD\xB6 \xE1\xBC\x94\xCF\x83\xCF\x84\xCE\xB9\xCE\xBD \xE1\xBC\x81\xCE\xBC\xCE\xB1\xCF\x81\xCF\x84\xCE\xAF\xCE\xB1 \xCE\xBF\xE1\xBD\x90 \xCF\x80\xCF\x81\xE1\xBD\xB8\xCF\x82 \xCE\xB8\xCE\xAC\xCE\xBD\xCE\xB1\xCF\x84\xCE\xBF\xCE\xBD."]]}
+      {:arc-jdn [:Series
+                 [["And"
+                   [:Action/Purpose
+                    [["Action" {:leaf 1}]
+                     ["Purpose"
+                      {:main true}
+                      [:Perception/Object
+                       [["Perception" {:leaf 2 :main true}]
+                        ["Object" {:leaf 3}]]]]]]]
+                  ["And"
+                   [:Assertion/Application
+                    [["Assertion"
+                      {:main true}
+                      [:Orienter/Content
+                       [["Orienter" {:leaf 4}]
+                        ["Content"
+                         {:main true}
+                         [:Series
+                          [["And"
+                            [:If/Then
+                             [["If" {:leaf 5}]
+                              ["Then" {:leaf 6 :main true}]]]]
+                           ["And"
+                            [:If/Then
+                             [["If"
+                               [:Perception/Object
+                                [["Perception" {:leaf 7 :main true}]
+                                 ["Object" {:leaf 8}]]]]
+                              ["Then"
+                               {:main true}
+                               [:Perception/Object
+                                [["Perception" {:leaf 9 :main true}]
+                                 ["Object" {:leaf 10}]]]]]]]]]]]]]
+                     ["Application"
+                      [:Condition/Command
+                       [["Condition"
+                         [:Epexegetical
+                          [["_" {:leaf 11 :main true}]
+                           ["Epexegesis" {:leaf 12}]]]]
+                        ["Command"
+                         {:main true}
+                         [:Action/Result
+                          [["Action" {:leaf 13}]
+                           ["Result"
+                            {:main true}
+                            [:Epexegetical
+                             [["_" {:leaf 14 :main true}]
+                              ["Epexegesis"
+                               [:Idea/Explanation
+                                [["Idea" {:leaf 15 :main true}]
+                                 ["Explanation"
+                                  [:Series
+                                   [["And"
+                                     [:Statement/Clarification
+                                      [["Statement" {:leaf 16 :main true}]
+                                       ["Clarification" {:leaf 17}]]]]
+                                    ["And"
+                                     [:Concessive
+                                      [["Concession" {:leaf 18}]
+                                       ["Assertion" {:leaf 19 :main true}]]]]]]]]]]]]]]]]]]]]]]]]}]))
