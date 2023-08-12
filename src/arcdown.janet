@@ -1,49 +1,72 @@
-# Uncomment to use `janet-lang/spork` helper functions.
-# (use spork)
+(import cmd)
 
 (use judge)
-(import jdn)
 
-(def kv-line-peg
-  ~{:key (<- (to ":"))
-    :value (<- (to "\n"))
-    :line (/ (* :s* :key ":" :s* :value "\n") ,|{$0 $1})
-    :main (some :line)})
+(use ./parse-md)
 
-(def front-matter-peg 
-  ~{:separator "---\n" 
-    :front-matter (* :separator (/ (<- (to :separator)) ,|(peg/match kv-line-peg $)) :separator)
-    :main (/ :front-matter ,|{:front-matter (merge ;$)})})
 
-(def md-table-peg 
-  ~{:raw-row (* (<- (to (+ "\n" -1))) (? "\n"))
-   :header (/ (* :raw-row (* (some (set "|- ")) "\n")) 
-              ,|(array/slice (map string/trim (string/split "|" $)) 1 -2))
-   :row (/ :raw-row ,|(array/slice (map string/trim (string/split "|" $)) 1 -2))
-   :main (* :header (some :row))})
+(def version "0.0.0-a")
 
-(def arc-text-peg
-  ~{:begin-arc-text (* "<!--" :s* "BEGIN:ARCTEXT" :s* "-->" :s*)
-    :end-arc-text (* "<!--" :s* "END:ARCTEXT" :s* "-->" :s*)
-    :main (/ (* :begin-arc-text (<- (to :end-arc-text)) :end-arc-text) ,|{:arc-text (peg/match md-table-peg $)})})
+(defn basename [path]
+  (last (string/split "/" path)))
 
-(def arc-jdn-peg
-  ~{:begin-arc-jdn (* "<!--" :s* "BEGIN:ARCJDN" :s* "-->" :s*)
-    :end-arc-jdn (* "<!--" :s* "END:ARCJDN" :s* "-->")
-    :codeblock (* "```" (? "janet") :s*)
-    :main (/ (* :begin-arc-jdn :codeblock (<- (to :codeblock)) :codeblock :end-arc-jdn) ,|{:arc-jdn (jdn/decode $)})})
+(defn find-all-arcd-files [path &opt explicit results]
+  (default explicit true)
+  (default results @[]) 
+  
+  (unless (string/has-prefix? "." (basename path))
+    (case (os/stat path :mode)
+      :directory
+      (each entry (os/dir path)
+        (find-all-arcd-files (string path "/" entry) false results))
+      :file
+      (if (string/has-suffix? ".arcd" path)
+        (array/push results path))
+      nil
+      (array/push results [(string/format "could not read %q" path)])))
+  
+  results)
 
-(def main-point-peg
-  ~{:begin-main-point (* "<!--" :s* "BEGIN:MAINPOINT" :s* "-->" :s*)
-    :end-main-point (* :s* "<!--" :s* "END:MAINPOINT" :s* "-->")
-    :main (/ (* :begin-main-point (<- (to :end-main-point)) :end-main-point) ,|{:main-point $})})
+(cmd/defn handle-version "" [] 
+  (print "arcdown v" version))
 
-(def arcdown-peg 
-  ~{:front-matter ,front-matter-peg
-    :arc-text ,arc-text-peg
-    :arc-jdn ,arc-jdn-peg
-    :main-point ,main-point-peg
-    :main (* (? :front-matter) (some (* (to (+ :arc-text :arc-jdn :main-point)) (+ :arc-text :arc-jdn :main-point))) (some 1))})
+(cmd/defn handle-ascii ""
+          []
+          (print "Generate an ASCII file of an arc diagram"))
 
-(defn main [& args]
-  (print "Hello, World!"))
+(cmd/defn handle-image ""
+          []
+          (print "Generate an image of an arc diagram"))
+
+(cmd/main 
+ (cmd/fn
+  (string/format
+   ```
+   arcdown v%s
+
+   Usage: arcdown [subcommand] {positional arguments} [options]
+   
+   A simple CLI tool for extracting data and metadata from correctly formatted Markdown files to create Arc diagrams, in either ASCII or full-color image.
+   ``` version)
+  [[--version -v] (effect |((print "Version " version) (os/exit 0)))
+   [--watch -w] (flag)
+   [--image -i] (flag)
+   [--ascii -a] (flag)
+   file (optional :file)] 
+
+  (var arcd-files @[])
+  (case (os/stat (or file (os/cwd)) :mode)
+      :directory (array/push arcd-files ;(find-all-arcd-files (or file (os/cwd))))
+      :file (array/push arcd-files (or file (os/cwd))))
+
+  
+  # TODO: What if there's more than one arc defined in the same file?
+  (def arcs
+    (seq [file :in arcd-files]
+      (peg/match arcdown-peg (slurp file))))
+  
+  # Refer to Mendoza implementation for example of how to `watch`
+  # - https://github.com/bakpakin/mendoza/blob/master/mendoza/init.janet#L162-L165
+  
+  
+  ))
