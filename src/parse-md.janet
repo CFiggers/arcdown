@@ -44,3 +44,24 @@
      :main (* (? :front-matter) 
               (some (* (to (+ :arc-text :arc-jdn :main-point)) (+ :arc-text :arc-jdn :main-point))) 
               (some 1))}))
+
+(defn hiccup-to-ast [hiccup]
+    (match hiccup 
+      ([x & rest] (not (indexed? x)))
+      (merge (if (and (indexed? (last rest)) 
+                      (indexed? ((last rest) 0)))
+               {:type :node :kind x}
+               {:type :branch :label x})
+             ;(seq [x :in rest] 
+                (cond 
+                  (dictionary? x) x
+                  (all indexed? rest) {:children ;(seq [x :in rest] 
+                                                    (hiccup-to-ast x))}
+                  {:children (hiccup-to-ast rest)})))
+      ([& xs] (all indexed? xs))
+      (seq [x :in xs] (hiccup-to-ast x))
+      x [:error x])) 
+
+(defn parse-arcd-file [file]
+  (-> (merge ;(peg/match arcdown-peg file)) 
+      (update :arc-jdn hiccup-to-ast)))
