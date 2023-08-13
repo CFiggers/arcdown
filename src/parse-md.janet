@@ -65,3 +65,90 @@
 (defn parse-arcd-file [file]
   (-> (merge ;(peg/match arcdown-peg file)) 
       (update :arc-jdn hiccup-to-ast)))
+
+(def ast 
+  @{:type :node
+    :kind :Idea/Explanation
+    :children @[@{:label "Idea"
+                  :leaf 1
+                  :main 1
+                  :type :branch}
+                @{:children @{:children @[@{:label "Negative"
+                                            :leaf 2
+                                            :type :branch}
+                                          @{:label "Positive"
+                                            :leaf 3
+                                            :main 1
+                                            :type :branch}]
+                              :kind :Negative/Positive
+                              :type :node}
+                  :label "Explanation"
+                  :type :branch}]})
+
+(defn width [str]
+  (length (string/replace-all "─" "-" str)))
+
+(defn traverse-arcd-ast [ast &opt local-max]
+  (default local-max 0)
+  (match ast
+    {:leaf x :label l}
+    (-> ast 
+        (put :x-position-begin 0)
+        (put :x-position-label 5)
+        (put :x-position-end (+ 4 (length l) 3))
+        (put :y-position (dec (* x 2)))
+        (put :ascii (string (string/format "% 2d" x) 
+                            " <─" l 
+                            (if (ast :main) "─*─" "───"))))
+    
+    {:type :branch :children _ :label l}
+    (let [index |(if (indexed? $) $ [$])]
+      
+      # Recurse through children
+      (set (ast :children) (seq [child :in (index (ast :children))]
+                             (traverse-arcd-ast child)))
+      
+      # Update self
+      (let [child-max (max ;(seq [child :in (index (ast :children))] (child :x-position-end)))
+            x-begin (+ 2 child-max)
+            x-end (+ x-begin 1 (length l) 3)] 
+        (-> ast
+            (put :x-position-max-child child-max)
+            (put :x-position-begin x-begin)
+            (put :x-position-label (+ child-max 4))
+            (put :x-position-end x-end)))) 
+    
+    {:type :node}
+    (do (set (ast :children) (seq [child :in (ast :children)] (traverse-arcd-ast child)))
+        
+        # Get largest values from children
+        (var max-x (max ;(seq [branch :in (ast :children)] 
+                           (branch :x-position-end)))) 
+        (var max-label (max ;(seq [branch :in (ast :children)]
+                            (branch :x-position-label))))
+        (var longest-label (max ;(seq [branch :in (ast :children)]
+                            (length (branch :label)))))
+          
+        # Update children to all match largest child values
+        (each child (ast :children)
+          (set (child :x-position-end) max-x)
+          (let [prefix (string
+                        (if-let [x (child :leaf)]
+                          (string/format "% 2d" x) "")
+                        " <─")
+                suffix (string (child :label)
+                               (string/repeat "─" (- longest-label (length (child :label))))
+                               (if (child :main) "─*─" "───"))
+                midfix (string/repeat "─" (- max-label 
+                                             (or (child :x-position-max-child) 0)
+                                             (if (= 0 (child :x-position-begin))
+                                               5 4)))]
+            (set (child :ascii) (string prefix midfix suffix)))) 
+        
+        # Update self
+        (-> ast
+            (put :x-position-begin (inc max-x))
+            (put :x-position-end (inc max-x))))) 
+      ast)
+
+(comment (traverse-arcd-ast ast))
