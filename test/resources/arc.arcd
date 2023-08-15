@@ -95,8 +95,8 @@ John's purpose in writing is so that his readers may have confident knowledge of
 
 <!-- BEGIN:ARCJDN -->
 ```janet
-[:Series
- [["And"
+[:Assertion/Extension
+ [["Assertion" {:main true}
    [:Action/Purpose
     [["Action" {:leaf 1}]
      ["Purpose" {:main true}
@@ -104,7 +104,7 @@ John's purpose in writing is so that his readers may have confident knowledge of
        [["Perception" {:main true :leaf 2}]
         ["Object" {:leaf 3}]]]]]]]
 
-  ["And"
+  ["Extension"
    [:Assertion/Application
     [["Assertion" {:main true}
       [:Orienter/Content
@@ -155,43 +155,43 @@ John's purpose in writing is so that his readers may have confident knowledge of
 
 <!-- BEGIN:BRACKETS -->
 ```
-1  <──────────────Action────┐ 
-                            |
-2  <─Percep─*─┐ <─Purpose─*─┘ <──────────────────────────────────────────────────────────────────Assert─*─┐
-              |                                                                                           |
-3  <─Object───┘                                                                                           |
-                                                                                                          |  
-4  <───────────────────────────────────Orienter───┐                                                       |
-                                                  |                                                       |
-5  <─If───────┐                                   |                                                       |
-              |                                   |                                                       |
-6  <─Then───*─┘ <────────────And───┐              |                                                       |
-                                   |              |                                                       |
-7  <─Percep─*─┐ <─If─────┐         |              |                                                       |
-              |          |         | <─Content──*─┘ <───────────────────────────────Assert─*─┐ <─Extens───┘ 
-8  <─Object───┘          |         |                                                         |
-                         |         |                                                         |
-9  <─Percep─*─┐ <─Then─*─┘ <─And───┘                                                         |
-              |                                                                              |
-10 <─Object───┘                                                                              |
-                                                                                             |
-11 <──────*─┐ <───────────────────────────────────────────────────────Cond──────┐            | 
-            |                                                                   |            |
-12 <─Epex───┘                                                                   |            |
-                                                                                |            |  
-13 <─────────────────────────────────────────────────────Action───┐             |            | 
-                                                                  |             |            |
-14 <───────────────────────────────────────────────*─┐ <─Result─*─┘ <─Command─*─┘ <─Applic───┘
-                                                     |
-15 <─────────────────────────────Idea───*─┐ <─Epex───┘
-                                          |
-16 <─Statement─────*─┐                    |
-                     | <─And─┐            |
-17 <─Clarification───┘       |            |
-                             | <─Explan───┘  
-18 <─Concession──────┐       |  
-                     | <─And─┘         
-19 <─Assertion─────*─┘         
+1  <──────────────────Action────┐ 
+                                |
+2  <─Perception─*─┐ <─Purpose─*─┘ <────────────────────────────────────────────────────────────────────────────────────Assertion─*─┐
+                  |                                                                                                                |
+3  <─Object───────┘                                                                                                                |
+                                                                                                                                   |  
+4  <───────────────────────────────────────Orienter───┐                                                                            |
+                                                      |                                                                            |
+5  <─If─────┐                                         |                                                                            |
+            |                                         |                                                                            |
+6  <─Then─*─┘ <──────────────────And───┐              |                                                                            |
+                                       |              |                                                                            |
+7  <─Perception─*─┐ <─If─────┐         |              |                                                                            |
+                  |          |         | <─Content──*─┘ <──────────────────────────────────────────────Assertion─*─┐ <─Extension───┘ 
+8  <─Object───────┘          |         |                                                                           |
+                             |         |                                                                           |
+9  <─Perception─*─┐ <─Then─*─┘ <─And───┘                                                                           |
+                  |                                                                                                |
+10 <─Object───────┘                                                                                                |
+                                                                                                                   |
+11 <──────────────*─┐ <──────────────────────────────────────────────────────────────Condition───┐                 | 
+                    |                                                                            |                 |
+12 <─Epexegetical───┘                                                                            |                 |
+                                                                                                 |                 |  
+13 <────────────────────────────────────────────────────────────────────Action───┐               |                 | 
+                                                                                 |               |                 |
+14 <──────────────────────────────────────────────────────────────*─┐ <─Result─*─┘ <─Command───*─┘ <─Application───┘
+                                                                    |
+15 <───────────────────────────────Idea────────*─┐ <─Epexegetical───┘
+                                                 |
+16 <─Statement─────*─┐                           |
+                     | <─And───┐                 |
+17 <─Clarification───┘         |                 |
+                               | <─Explanation───┘  
+18 <─Concession───┐            |  
+                  | <────And───┘         
+19 <─Assertion──*─┘         
 ```
 <!-- END:BRACKETS -->
 
