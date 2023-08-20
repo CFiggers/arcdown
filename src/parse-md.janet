@@ -164,4 +164,4 @@
 
 (comment (traverse-arcd-ast ast))
 
-# TODO NEXT: Add Y position to traversal
+# TODO NEXT: Validate full arc is being traversed correctly so far
